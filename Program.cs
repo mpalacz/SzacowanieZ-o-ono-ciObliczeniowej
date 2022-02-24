@@ -25,6 +25,17 @@ namespace SzacowanieZłożonościObliczeniowej
             // zwrot na przekazanie wyniku
             return KolejnaWartośćSilni;
         }
+        static void Hanoi(char A, char B, char C, int n)
+        {
+            if (n == 1)
+                Console.WriteLine("\n\tPrzenieś krążek z wieży " + char.ToUpper(A) + " i połóż go na wierzchołku wieży " + char.ToUpper(C));
+            else
+            {
+                Hanoi(A, C, B, n - 1);
+                Console.WriteLine("\n\tPrzenieś krążek z wieży " + char.ToUpper(A) + " i połóż go na wierzchołku wieży " + char.ToUpper(C));
+                Hanoi(B, A, C, n - 1);
+            }
+        }
         static void Main(string[] args)
         {
         }
