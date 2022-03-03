@@ -38,6 +38,33 @@ namespace SzacowanieZłożonościObliczeniowej
         }
         static void Main(string[] args)
         {
+            char WybranaFunkcjonalność;
+            ushort N;
+            Console.WriteLine("\n\n\t\t\t Wieże HANOI");
+            do
+            {
+                Console.WriteLine("\tA. Wieże Hanoi\n");
+                Console.WriteLine("\tX. Zakończenie programu\n");
+                Console.WriteLine("\n\tWybierz jedną z funkcjonalnośći");
+                char.TryParse(Console.ReadLine(), out WybranaFunkcjonalność);
+
+                //rozpoznanie wybranych funkconajlności
+                if (WybranaFunkcjonalność == 'a' || WybranaFunkcjonalność == 'A')
+                {
+                    Console.WriteLine("\tPodaj liczbę krążków: ");
+                    while (!ushort.TryParse(Console.ReadLine(), out N))
+                    {
+                        Console.WriteLine("\n\tERROR: wystąpił niedozwolony znak w zapisie liczby krążków");
+                        Console.WriteLine("\nPodaj ponownie liczbę krążków: ");
+                    }
+                    // wywołanie metody Hanoi
+                    Hanoi('A', 'B', 'C', N);
+                    Console.WriteLine("\n\tNaciśnij dowolny klawisz dla kontynuacji programu...");
+                    Console.ReadKey();
+                }
+            } while (WybranaFunkcjonalność != 'X' || WybranaFunkcjonalność != 'x');
+            Console.WriteLine("\n\tNaciśnij dowolny klawisz dla zakończenia programu...");
+            Console.ReadKey();
         }
     }
 }
