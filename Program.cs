@@ -22,8 +22,42 @@ namespace SzacowanieZłożonościObliczeniowej
             long KolejnaWartośćSilni = 1; // dla n = 0
             for(ushort i = 1; i <= n; i++)
                 KolejnaWartośćSilni = KolejnaWartośćSilni * i;
-            // zwrot na przekazanie wyniku
+            // zwrotne przekazanie wyniku
             return KolejnaWartośćSilni;
+        }
+        static long FibonacciRekurencyjny(int n)
+        {
+            // sprawdzanie warunku brzegowego
+            if (n == 0 || n == 1)
+                return 1;
+            return FibonacciRekurencyjny(n - 1) + FibonacciRekurencyjny(n - 2);
+        }
+        static long FibonacciRekurencyjny2(int n)
+        {
+            // sprawdzanie warunku brzegowego
+            if (n > 1)
+                return FibonacciRekurencyjny2(n - 1) + FibonacciRekurencyjny2(n - 2);
+            return 1;
+        }
+        static long FibonacciIteracyjny(int n)
+        {
+            if (n > 1)
+            {
+                // pomocnicze deklaracje
+                long F, Fp, Fpp;
+                // ustalenie stanu początkowego
+                F = 0; Fpp = 1; Fp = 1;
+                for(ushort i = 2; i <= n; i++)
+                {
+                    // wyznaczenie i-tego wyrazu ciągu Fibonacciego
+                    F = Fp + Fpp;
+                    // uaktualnienie wyrazu Fp i Fpp dla obliczenia wyrazu i+1
+                    Fpp = Fp;
+                    Fp = F;
+                }
+                return F;
+            }
+            return 1;
         }
         static void Hanoi(char A, char B, char C, int n)
         {
